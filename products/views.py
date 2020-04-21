@@ -1,11 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from .models import Product
 
-
-# Create your views here.
 
 def index(request):
-    return HttpResponse('Hello Aradhana')
+    products = Product.objects.all()
+    # return HttpResponse('Hello Aradhana')
+    return render(request, 'index.html',
+                  {'products': products})
 
 
 def newmethod(request):
